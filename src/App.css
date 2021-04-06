@@ -1,38 +1,36 @@
 .App {
   text-align: center;
+  background-color: rgb(221, 217, 217);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navBar {
+  text-align: left;
+  background-color: white;
+  padding-left: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.topicsNav {
+  padding-left: 10px;
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#mcrNewsLogo {
+  text-decoration: none;
+  padding-right: 30px;
+  font-weight: 700;
 }
 
-.App-link {
-  color: #61dafb;
+ul {
+  list-style-type: none;
+  list-style-position: inside;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.all-articles {
+  border-style: bold;
+  border-width: 200px;
+  background-color: white;
+}
+
+.article-header {
+  text-decoration: none;
 }
