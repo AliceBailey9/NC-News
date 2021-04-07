@@ -6,7 +6,7 @@ const articleApi = axios.create({
 
 export const getArticles = async (topic) => {
   const { data } = await articleApi.get("/articles", {
-    params: { topic: topic },
+    params: { topic: topic, sort_by: "votes" },
   });
   return data.articles;
 };
@@ -26,5 +26,11 @@ export const getArticleById = (id) => {
 export const getCommentsByid = (id) => {
   return articleApi.get(`/articles/${id}/comments`).then((res) => {
     return res.data.comments;
+  });
+};
+
+export const addLike = (requestBody, id) => {
+  return articleApi.patch(`articles/${id}`, requestBody).then((res) => {
+    return res.data.article;
   });
 };

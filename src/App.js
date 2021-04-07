@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <Nav />
+
       <Router>
         <Articles path="/" />
         <Articles path="/:topic/articles" />
