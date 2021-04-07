@@ -16,7 +16,7 @@ class Nav extends Component {
     return (
       <nav className="navBar">
         <Link id="mcrNewsLogo" to="/">
-          Manchester News
+          Mcr News
         </Link>
         {this.state.topics.map(({ slug }) => {
           return (
@@ -25,6 +25,7 @@ class Nav extends Component {
             </Link>
           );
         })}
+        <button id="login-btn">Login</button>
       </nav>
     );
   }

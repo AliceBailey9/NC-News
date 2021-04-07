@@ -39,47 +39,45 @@ class Articles extends Component {
         {this.state.articles.map(
           ({ article_id, author, title, created_at, topic, votes }, index) => {
             return (
-              <div key={article_id} className="flexbox-item">
-                <small>{created_at}</small>
-                {topic === "coding" ? (
-                  <div>
-                    <img
-                      className="pics"
-                      src={randomImage(codingImages)}
-                      alt="Woman coding"
-                    ></img>
-                  </div>
-                ) : null}
-                {topic === "cooking" ? (
-                  <div>
-                    <img
-                      className="pics"
-                      src={randomImage(cookingImages)}
-                      alt="Woman coding"
-                    ></img>
-                  </div>
-                ) : null}
-                {topic === "football" ? (
-                  <div>
-                    <img
-                      className="pics"
-                      src={randomImage(footballImages)}
-                      alt="Woman coding"
-                    ></img>
-                  </div>
-                ) : null}
-                <h1>
-                  <Link
-                    className="article-header"
-                    key={article_id}
-                    to={`/articles/${article_id}`}
-                  >
-                    {title}
-                  </Link>
-                </h1>
-                <h2>Author: {author}</h2>
-                <p>Likes {votes}</p>
-              </div>
+              <Link
+                className="article-header"
+                key={article_id}
+                to={`/articles/${article_id}`}
+              >
+                <div key={article_id} className="flexbox-item">
+                  <small>{created_at}</small>
+                  {topic === "coding" ? (
+                    <div>
+                      <img
+                        className="pics"
+                        src={randomImage(codingImages)}
+                        alt="coding"
+                      ></img>
+                    </div>
+                  ) : null}
+                  {topic === "cooking" ? (
+                    <div>
+                      <img
+                        className="pics"
+                        src={randomImage(cookingImages)}
+                        alt="cookng"
+                      ></img>
+                    </div>
+                  ) : null}
+                  {topic === "football" ? (
+                    <div>
+                      <img
+                        className="pics"
+                        src={randomImage(footballImages)}
+                        alt="football"
+                      ></img>
+                    </div>
+                  ) : null}
+                  <h1>{title}</h1>
+                  <h2>Author: {author}</h2>
+                  <p>Likes {votes}</p>
+                </div>
+              </Link>
             );
           }
         )}

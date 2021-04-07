@@ -3,6 +3,12 @@ import { getArticleById } from "../api";
 import Comments from "./Comments";
 import Loader from "./Loader";
 import LikeButton from "./LikeButton";
+import {
+  randomImage,
+  codingImages,
+  cookingImages,
+  footballImages,
+} from "../utils";
 
 class SingleArticle extends Component {
   state = {
@@ -36,6 +42,33 @@ class SingleArticle extends Component {
     }
     return (
       <section>
+        {article.topic === "coding" ? (
+          <div>
+            <img
+              className="pics"
+              src={randomImage(codingImages)}
+              alt="coding"
+            ></img>
+          </div>
+        ) : null}
+        {article.topic === "cooking" ? (
+          <div>
+            <img
+              className="pics"
+              src={randomImage(cookingImages)}
+              alt="cookng"
+            ></img>
+          </div>
+        ) : null}
+        {article.topic === "football" ? (
+          <div>
+            <img
+              className="pics"
+              src={randomImage(footballImages)}
+              alt="football"
+            ></img>
+          </div>
+        ) : null}
         <h1>{article.title}</h1>
         {article.body}
         <small>{article.author}</small>
