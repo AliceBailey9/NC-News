@@ -4,6 +4,7 @@ import Comments from "./Comments";
 import Loader from "./Loader";
 import LikeButton from "./LikeButton";
 import PicsByTopic from "./PicsByTopic";
+import GetUserPics from "./GetUserPics";
 
 class SingleArticle extends Component {
   state = {
@@ -26,16 +27,20 @@ class SingleArticle extends Component {
     return (
       <section id="article-background">
         <div className="single-article">
-          <PicsByTopic topicType={article.topic} />
-          <h1>{article.title}</h1>
-          <h2>{article.author}</h2>
-          {article.body}
-          <small>{article.author}</small>
+          <div className="pic-container">
+            <PicsByTopic topicType={article.topic} />
+          </div>
+
+          <div className="article-info-item">
+            <h1>{article.title}</h1>
+            <h2>{article.author}</h2>
+            <GetUserPics username={article.author} />
+          </div>
         </div>
-        <LikeButton
-          likes={this.state.article.votes}
-          article_id={this.state.article.article_id}
-        />
+        <div className="body-item">
+          <p>{article.body}</p>
+        </div>
+        <LikeButton likes={article.votes} article_id={article.article_id} />
         <Comments article_id={article.article_id} />
       </section>
     );

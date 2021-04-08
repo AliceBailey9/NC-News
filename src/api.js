@@ -34,3 +34,15 @@ export const addLike = (requestBody, id) => {
     return res.data.article;
   });
 };
+
+export const postComment = (requestBody, id) => {
+  return articleApi.post(`articles/${id}/comments`, requestBody).then((res) => {
+    return res.data.comment;
+  });
+};
+
+export const getUser = (username) => {
+  return articleApi.get(`/user/${username}`).then((res) => {
+    return res.data.user;
+  });
+};
