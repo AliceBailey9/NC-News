@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import { getArticles } from "../api";
 import { Link } from "@reach/router";
 import Loader from "./Loader";
-import {
-  randomImage,
-  codingImages,
-  cookingImages,
-  footballImages,
-} from "../utils";
+import PicsByTopic from "./PicsByTopic";
+import LikeButton from "./LikeButton";
 
 class Articles extends Component {
   state = {
@@ -39,45 +35,21 @@ class Articles extends Component {
         {this.state.articles.map(
           ({ article_id, author, title, created_at, topic, votes }, index) => {
             return (
-              <Link
-                className="article-header"
-                key={article_id}
-                to={`/articles/${article_id}`}
-              >
-                <div key={article_id} className="flexbox-item">
+              <div key={article_id} className="flexbox-item">
+                <Link
+                  className="article-header"
+                  key={article_id}
+                  to={`/articles/${article_id}`}
+                >
                   <small>{created_at}</small>
-                  {topic === "coding" ? (
-                    <div>
-                      <img
-                        className="pics"
-                        src={randomImage(codingImages)}
-                        alt="coding"
-                      ></img>
-                    </div>
-                  ) : null}
-                  {topic === "cooking" ? (
-                    <div>
-                      <img
-                        className="pics"
-                        src={randomImage(cookingImages)}
-                        alt="cookng"
-                      ></img>
-                    </div>
-                  ) : null}
-                  {topic === "football" ? (
-                    <div>
-                      <img
-                        className="pics"
-                        src={randomImage(footballImages)}
-                        alt="football"
-                      ></img>
-                    </div>
-                  ) : null}
                   <h1>{title}</h1>
-                  <h2>Author: {author}</h2>
-                  <p>Likes {votes}</p>
+                </Link>
+                <div className="article-style">
+                  <PicsByTopic topicType={topic} />
+                  <h2>User: {author}</h2>
                 </div>
-              </Link>
+                <LikeButton likes={votes} article_id={article_id} />
+              </div>
             );
           }
         )}

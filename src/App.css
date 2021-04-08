@@ -7,6 +7,16 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.login-btns {
+  text-align: right;
+  background-color: rgb(252, 183, 183);
+  padding: 8px 25px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  outline: none;
+}
 .topicsNav {
   padding-left: 10px;
   text-decoration: none;
@@ -17,13 +27,16 @@
 #mcrNewsLogo {
   text-decoration: none;
   padding-right: 30px;
-  font-weight: 900;
+  font-weight: 1000;
   color: rgb(184, 12, 12);
   font-size: 30px;
 }
 
 .article-header {
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .flexbox-container {
@@ -34,27 +47,58 @@
 }
 
 .flexbox-item {
-  width: 100rem;
+  flex: 1;
+  width: 50rem;
   border: 0.5px solid rgb(151, 151, 151);
   background-color: rgb(255, 255, 255);
   margin: 10px;
   color: black;
   font-size: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  align-items: center;
 }
 
 .pics {
   max-width: 400px;
 }
 
-#login-btn {
-  text-align: right;
-  margin-left: 200px;
-  background-color: rgb(252, 183, 183);
-  padding: 8px 25px;
+.article-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+ul {
+  list-style-type: none;
+  background-color: rgb(174, 177, 177);
+  margin: 10px 50px;
+  padding: 10px 20px;
+}
+
+li {
+  padding: 10px;
+  margin: 10px;
+}
+
+.App {
+  background-color: rgb(112, 110, 110);
+  padding-bottom: 10px;
+}
+
+.single-article {
+  background-color: white;
+  margin: 10px 50px;
+}
+
+.like-dislike-btn {
+  font-size: 30px;
+  font-weight: 1000;
+  color: grey;
   border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  opacity: 0.7;
-  outline: none;
+  background-color: rgb(216, 215, 215);
+}
+
+.like-btn-area {
+  font-size: 20px;
+  padding-left: 15px;
+  background-color: rgb(216, 215, 215);
 }

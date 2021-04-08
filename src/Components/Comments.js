@@ -21,7 +21,12 @@ class Comments extends Component {
       <div>
         <ul>
           {this.state.comments.map(({ comment_id, author, votes, body }) => {
-            return <li key={comment_id}>{body}</li>;
+            return (
+              <li key={comment_id}>
+                {author}
+                {body}
+              </li>
+            );
           })}
         </ul>
       </div>

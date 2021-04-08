@@ -25,7 +25,8 @@ class Nav extends Component {
             </Link>
           );
         })}
-        <button id="login-btn">Login</button>
+        <button className="login-btns">Login</button>
+        <button className="login-btns">Sign-Up</button>
       </nav>
     );
   }
