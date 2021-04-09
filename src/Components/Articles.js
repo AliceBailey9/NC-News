@@ -32,7 +32,7 @@ class Articles extends Component {
       return <Loader />;
     }
     return (
-      <div class="flexbox-container">
+      <div className="flexbox-container">
         {this.state.articles.map(
           ({
             article_id,
@@ -59,7 +59,7 @@ class Articles extends Component {
                   <GetUserPics username={author} />
                   <p>{comment_count} Comments </p>
                 </div>
-                <LikeButton likes={votes} article_id={article_id} />
+                <LikeButton likes={votes} id={article_id} type="articles" />
               </div>
             );
           }

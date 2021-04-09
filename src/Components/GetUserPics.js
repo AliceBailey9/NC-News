@@ -13,7 +13,6 @@ class GetUserPics extends Component {
   }
 
   render() {
-    console.log(this.state.usernamePhoto);
     return (
       <div>
         <img

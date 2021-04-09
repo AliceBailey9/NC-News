@@ -19,7 +19,6 @@ class SingleArticle extends Component {
   };
 
   render() {
-    console.log(this.state);
     const { isLoading, article } = this.state;
     if (isLoading) {
       return <Loader />;
@@ -39,8 +38,13 @@ class SingleArticle extends Component {
         </div>
         <div className="body-item">
           <p>{article.body}</p>
+          <LikeButton
+            likes={article.votes}
+            id={article.article_id}
+            type="articles"
+          />
         </div>
-        <LikeButton likes={article.votes} article_id={article.article_id} />
+
         <Comments article_id={article.article_id} />
       </section>
     );

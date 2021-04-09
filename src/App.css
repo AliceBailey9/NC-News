@@ -104,30 +104,33 @@ li {
 
 .article-info-item {
   flex: 1;
-  background-color: lawngreen;
+  background-color: rgb(252, 252, 252);
 }
 
 .pic-container {
   flex: 1;
-  height: 450px;
+  height: 430px;
   width: 600px;
-  background-color: hotpink;
+  background-color: white;
   margin: 20px;
 }
 
 .body-item {
   margin: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: white;
 }
 
 .group-pics {
-  height: 100%;
-  width: 100%;
+  object-fit: contain;
+  height: 430px;
+  width: 600px;
 }
 
 .pics {
   height: 100%;
   width: 100%;
+
   object-fit: cover;
 }
 
@@ -136,4 +139,20 @@ li {
   width: 60px;
   object-fit: contain;
   border-radius: 30px;
+}
+
+.comment-container {
+  display: wrap;
+}
+
+.comment-item {
+  flex: 1;
+}
+
+.comment-pic-item {
+  flex: 1;
+}
+
+.comment-username-item {
+  flex: 1;
 }

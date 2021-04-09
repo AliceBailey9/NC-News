@@ -3,6 +3,8 @@ import { getCommentsByid } from "../api";
 import Loader from "./Loader";
 import AddComment from "./AddComment";
 import GetUserPics from "./GetUserPics";
+import LikeButton from "./LikeButton";
+import DeleteComment from "./DeleteComment";
 
 class Comments extends Component {
   state = {
@@ -15,6 +17,19 @@ class Comments extends Component {
       this.setState({ comments: comments, isLoading: false });
     });
   }
+
+  removeComment = (comment_id) => {
+    this.setState((currState) => {
+      const updatedComment = currState.comments.filter(
+        (comment) => comment.comment_id !== comment_id
+      );
+      const updatedState = {
+        comments: updatedComment,
+        isLoading: false,
+      };
+      return updatedState;
+    });
+  };
 
   addPostedComment = (newComment) => {
     this.setState((currState) => {
@@ -38,10 +53,15 @@ class Comments extends Component {
         <ul>
           {this.state.comments.map(({ comment_id, author, votes, body }) => {
             return (
-              <li key={comment_id}>
-                <GetUserPics username={author} />
-                {author}
-                {body}
+              <li key={comment_id} className="comment-container">
+                <GetUserPics username={author} className="comment-pic-item" />{" "}
+                <h3 className="comment-username-item">{author}</h3>
+                <p className="comment-item">{body}</p>
+                <LikeButton likes={votes} id={comment_id} type="comments" />
+                <DeleteComment
+                  comment_id={comment_id}
+                  removeComment={this.removeComment}
+                />
               </li>
             );
           })}

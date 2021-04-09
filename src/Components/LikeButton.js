@@ -8,7 +8,7 @@ class LikeButton extends Component {
     err: null,
   };
 
-  handleClick = (num, article_id) => {
+  handleClick = (num, id, type) => {
     this.setState((currState) => {
       const updatedState = {
         likeChanges: currState.likeChanges + num,
@@ -16,7 +16,7 @@ class LikeButton extends Component {
       };
       return updatedState;
     });
-    addLike({ inc_votes: num }, article_id).catch((err) => {
+    addLike({ inc_votes: num }, id, type).catch((err) => {
       this.setState((currState) => {
         return { likeChanges: currState.likeChanges - num, err: err };
       });
@@ -29,7 +29,7 @@ class LikeButton extends Component {
         <button
           className="like-dislike-btn"
           onClick={() => {
-            this.handleClick(1, this.props.article_id);
+            this.handleClick(1, this.props.id, this.props.type);
           }}
         >
           ↑{" "}
@@ -43,7 +43,7 @@ class LikeButton extends Component {
         <button
           className="like-dislike-btn"
           onClick={() => {
-            this.handleClick(-1, this.props.article_id);
+            this.handleClick(-1, this.props.id, this.props.type);
           }}
         >
           ↓{" "}

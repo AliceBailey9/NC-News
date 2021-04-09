@@ -8,7 +8,7 @@ import {
 
 function PicsByTopic(props) {
   return (
-    <div lassName="pic-item">
+    <div className="pic-item">
       {props.topicType === "coding" ? (
         <div className="group-pics">
           <img

@@ -29,9 +29,9 @@ export const getCommentsByid = (id) => {
   });
 };
 
-export const addLike = (requestBody, id) => {
-  return articleApi.patch(`articles/${id}`, requestBody).then((res) => {
-    return res.data.article;
+export const addLike = (requestBody, id, type) => {
+  return articleApi.patch(`${type}/${id}`, requestBody).then((res) => {
+    return res.data;
   });
 };
 
@@ -44,5 +44,11 @@ export const postComment = (requestBody, id) => {
 export const getUser = (username) => {
   return articleApi.get(`/user/${username}`).then((res) => {
     return res.data.user;
+  });
+};
+
+export const deleteComment = (comment_id) => {
+  return articleApi.delete(`/comments/${comment_id}`).then((res) => {
+    return res.data;
   });
 };
