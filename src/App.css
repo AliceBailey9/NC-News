@@ -97,9 +97,9 @@ li {
 
 .single-article {
   display: flex;
-
+  flex-direction: column;
   background-color: white;
-  margin: 10px 50px;
+  margin: 10px 400px;
 }
 
 .article-info-item {
@@ -108,11 +108,6 @@ li {
 }
 
 .pic-container {
-  flex: 1;
-  height: 430px;
-  width: 600px;
-  background-color: white;
-  margin: 20px;
 }
 
 .body-item {
@@ -121,16 +116,9 @@ li {
   background-color: white;
 }
 
-.group-pics {
-  object-fit: contain;
+.pics {
   height: 430px;
   width: 600px;
-}
-
-.pics {
-  height: 100%;
-  width: 100%;
-
   object-fit: cover;
 }
 
@@ -142,6 +130,7 @@ li {
 }
 
 .comment-container {
+  margin: 0px 300px;
   display: wrap;
 }
 

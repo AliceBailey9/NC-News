@@ -45,23 +45,26 @@ class Comments extends Component {
       return <Loader />;
     }
     return (
-      <div>
+      <div className="comment-container">
         <AddComment
+          user={this.props.user}
           article_id={this.props.article_id}
           addPostedComment={this.addPostedComment}
         />
         <ul>
           {this.state.comments.map(({ comment_id, author, votes, body }) => {
             return (
-              <li key={comment_id} className="comment-container">
+              <li key={comment_id}>
                 <GetUserPics username={author} className="comment-pic-item" />{" "}
                 <h3 className="comment-username-item">{author}</h3>
                 <p className="comment-item">{body}</p>
                 <LikeButton likes={votes} id={comment_id} type="comments" />
-                <DeleteComment
-                  comment_id={comment_id}
-                  removeComment={this.removeComment}
-                />
+                {this.props.user === author ? (
+                  <DeleteComment
+                    comment_id={comment_id}
+                    removeComment={this.removeComment}
+                  />
+                ) : null}
               </li>
             );
           })}

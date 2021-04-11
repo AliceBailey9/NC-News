@@ -43,6 +43,15 @@ export const footballImages = [
   "https://www.visitbritainshop.com/world/~/media/images/article%20template%202020/7%20great%20football%20stadium%20to%20see%20in%20england/emirates_stadium.ashx",
 ];
 
+export const usersArray = [
+  "tickle122",
+  "grumpy19",
+  "happyamy2016",
+  "cooljmessy",
+  "weegembump",
+  "jessjelly",
+];
+
 export const randomImage = (array) => {
   let length = array.length;
 

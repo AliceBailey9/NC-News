@@ -26,26 +26,25 @@ class SingleArticle extends Component {
     return (
       <section id="article-background">
         <div className="single-article">
+          <div className="article-info-item">
+            <h2>{article.author}</h2>
+            <GetUserPics username={article.author} />
+            <LikeButton
+              likes={article.votes}
+              id={article.article_id}
+              type="articles"
+            />
+            <h1>{article.title}</h1>
+          </div>
           <div className="pic-container">
             <PicsByTopic topicType={article.topic} />
           </div>
 
-          <div className="article-info-item">
-            <h1>{article.title}</h1>
-            <h2>{article.author}</h2>
-            <GetUserPics username={article.author} />
+          <div className="body-item">
+            <p>{article.body}</p>
           </div>
         </div>
-        <div className="body-item">
-          <p>{article.body}</p>
-          <LikeButton
-            likes={article.votes}
-            id={article.article_id}
-            type="articles"
-          />
-        </div>
-
-        <Comments article_id={article.article_id} />
+        <Comments article_id={article.article_id} user={this.props.user} />
       </section>
     );
   }

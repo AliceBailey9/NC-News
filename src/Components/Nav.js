@@ -1,10 +1,26 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import { getTopics } from "../api";
+import { usersArray } from "../utils";
 
 class Nav extends Component {
   state = {
     topics: [],
+    user: "",
+  };
+
+  handleChange = (key, text) => {
+    this.setState({ [key]: text });
+  };
+
+  handleSubmit = (event) => {
+    const { user } = this.state;
+    event.preventDefault();
+    for (let i = 0; i < usersArray.length; i++) {
+      if (user === usersArray[i]) {
+        this.props.updateUsername(user);
+      }
+    }
   };
 
   componentDidMount() {
@@ -25,8 +41,17 @@ class Nav extends Component {
             </Link>
           );
         })}
-        <button className="login-btns">Login</button>
-        <button className="login-btns">Sign-Up</button>
+        <form onSubmit={this.handleSubmit}>
+          <label>Username</label>
+          <input
+            id="login-w-user"
+            type="text"
+            onChange={(event) => this.handleChange("user", event.target.value)}
+          ></input>
+          <button>Login</button>
+        </form>
+        {/* <button className="login-btns">Login</button>
+        <button className="login-btns">Sign-Up</button> */}
       </nav>
     );
   }
