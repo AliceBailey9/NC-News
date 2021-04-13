@@ -8,6 +8,13 @@ class LikeButton extends Component {
     err: null,
   };
 
+  resetLikes = () => {
+    this.setState({
+      likeChanges: 0,
+      err: null,
+    });
+  };
+
   handleClick = (num, id, type) => {
     this.setState((currState) => {
       const updatedState = {
@@ -23,6 +30,13 @@ class LikeButton extends Component {
     });
   };
 
+  componentDidUpdate = (prevProps) => {
+    if (this.props.user !== prevProps.user) {
+      this.props.onUserChange(this.state.likeChanges);
+      this.resetLikes();
+    }
+  };
+
   render() {
     return (
       <div className="like-btn-area">
@@ -31,6 +45,7 @@ class LikeButton extends Component {
           onClick={() => {
             this.handleClick(1, this.props.id, this.props.type);
           }}
+          disabled={this.state.likeChanges > 0 ? true : false}
         >
           ↑{" "}
         </button>
@@ -45,6 +60,7 @@ class LikeButton extends Component {
           onClick={() => {
             this.handleClick(-1, this.props.id, this.props.type);
           }}
+          disabled={this.state.likeChanges < 0 ? true : false}
         >
           ↓{" "}
         </button>

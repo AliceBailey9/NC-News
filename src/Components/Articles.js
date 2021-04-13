@@ -5,17 +5,23 @@ import Loader from "./Loader";
 import PicsByTopic from "./PicsByTopic";
 import LikeButton from "./LikeButton";
 import GetUserPics from "./GetUserPics";
+import ErrorDisplayer from "./ErrorDisplayer";
 
 class Articles extends Component {
   state = {
     articles: [],
     isLoading: true,
+    err: null,
   };
 
   componentDidMount() {
-    getArticles(this.props.topic).then((articles) => {
-      this.setState({ articles: articles, isLoading: false });
-    });
+    getArticles(this.props.topic)
+      .then((articles) => {
+        this.setState({ articles: articles, isLoading: false });
+      })
+      .catch((err) => {
+        this.setState({ err: err, isLoading: false });
+      });
   }
 
   componentDidUpdate(prevProps) {
@@ -28,9 +34,19 @@ class Articles extends Component {
   }
 
   render() {
-    if (this.state.isLoading) {
+    const { isLoading, err } = this.state;
+
+    if (err) {
+      return (
+        <ErrorDisplayer
+          status={err.response.status}
+          msg={err.response.data.msg}
+        />
+      );
+    } else if (isLoading) {
       return <Loader />;
     }
+
     return (
       <div className="flexbox-container">
         {this.state.articles.map(

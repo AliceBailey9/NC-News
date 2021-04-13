@@ -50,8 +50,11 @@ class Nav extends Component {
           ></input>
           <button>Login</button>
         </form>
-        {/* <button className="login-btns">Login</button>
-        <button className="login-btns">Sign-Up</button> */}
+        {this.props.loggedIn ? (
+          <p>You are logged in as {this.props.loggedIn} </p>
+        ) : (
+          <p>You are not logged in as a user</p>
+        )}
       </nav>
     );
   }

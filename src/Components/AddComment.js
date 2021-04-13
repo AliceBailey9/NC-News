@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { postComment } from "../api";
+import ErrorDisplayer from "./ErrorDisplayer";
 
 class AddComment extends Component {
   state = {
     body: "",
+    err: null,
   };
 
   handleChange = (key, text) => {
@@ -14,17 +16,28 @@ class AddComment extends Component {
     const { body } = this.state;
     event.preventDefault();
 
-    postComment(
-      { author: this.props.user, body: body },
-      this.props.article_id
-    ).then((newPostedComment) => {
-      this.props.addPostedComment(newPostedComment);
-      this.setState({ user: "", body: "" });
-    });
+    postComment({ author: this.props.user, body: body }, this.props.article_id)
+      .then((newPostedComment) => {
+        this.props.addPostedComment(newPostedComment);
+        this.setState({ user: "", body: "" });
+      })
+      .catch((err) => {
+        this.setState({ err: err });
+      });
   };
 
   render() {
-    const { body } = this.state;
+    const { body, err } = this.state;
+
+    if (err) {
+      return (
+        <ErrorDisplayer
+          status={err.response.status}
+          msg={err.response.data.msg}
+        />
+      );
+    }
+
     return (
       <form onSubmit={this.handleSubmit}>
         <label>comment</label>
