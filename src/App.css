@@ -24,9 +24,9 @@
 
 .article-header {
   text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  color: black;
+  font: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .flexbox-container {
@@ -37,27 +37,25 @@
 }
 
 .flexbox-item {
-  flex: 1;
   width: 50rem;
   border: 0.5px solid rgb(151, 151, 151);
   background-color: rgb(255, 255, 255);
   margin: 10px;
-  color: black;
-  font-size: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  align-items: center;
 }
 
-.article-style {
+.all-articles-userInfo {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.all-articles-comments-like-btns {
+  display: flex;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+}
+
 ul {
   list-style-type: none;
-  background-color: rgb(174, 177, 177);
-  margin: 10px 50px;
-  padding: 10px 20px;
 }
 
 li {
@@ -71,18 +69,16 @@ li {
 }
 
 .like-dislike-btn {
-  font-size: 30px;
-  font-weight: 1000;
-  color: grey;
+  font-size: 20px;
+  color: black;
   border: none;
-  background-color: rgb(216, 215, 215);
+  background-color: white;
 }
 
 .like-btn-area {
+  display: flex;
   font-size: 20px;
-  padding-left: 15px;
-  background-color: rgb(216, 215, 215);
-  margin: 10px 50px;
+  padding-left: 60px;
 }
 
 .single-article {
@@ -95,9 +91,6 @@ li {
 .article-info-item {
   flex: 1;
   background-color: rgb(252, 252, 252);
-}
-
-.pic-container {
 }
 
 .body-item {
@@ -113,25 +106,32 @@ li {
 }
 
 .username-photo {
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   object-fit: contain;
-  border-radius: 30px;
+  border-radius: 20px;
 }
 
 .comment-container {
-  margin: 0px 300px;
+  margin: 200px;
   display: wrap;
+  background-color: white;
 }
 
-.comment-item {
-  flex: 1;
+.comment-body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.comment-pic-item {
-  flex: 1;
+.comment-username {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.comment-username-item {
-  flex: 1;
+.comment-info {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+}
+
+.whole-comment {
+  display: flex;
 }

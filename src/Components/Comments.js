@@ -12,6 +12,22 @@ class Comments extends Component {
     isLoading: true,
   };
 
+  onUserChange = (numLikes, id) => {
+    this.setState((currState) => {
+      const updatedComments = [...currState.comments];
+      for (let i = 0; i < updatedComments.length; i++) {
+        if (updatedComments[i].comment_id === id)
+          updatedComments[i].comment_id =
+            updatedComments[i].comment_id + numLikes;
+      }
+      const updatedState = {
+        comments: updatedComments,
+        isLoading: false,
+      };
+      return updatedState;
+    });
+  };
+
   componentDidMount() {
     getCommentsByid(this.props.article_id).then((comments) => {
       this.setState({ comments: comments, isLoading: false });
@@ -55,10 +71,20 @@ class Comments extends Component {
           {this.state.comments.map(({ comment_id, author, votes, body }) => {
             return (
               <li key={comment_id}>
-                <GetUserPics username={author} className="comment-pic-item" />{" "}
-                <h3 className="comment-username-item">{author}</h3>
-                <p className="comment-item">{body}</p>
-                <LikeButton likes={votes} id={comment_id} type="comments" />
+                <div className="whole-comment">
+                  <GetUserPics username={author} className="comment-pic-item" />{" "}
+                  <div className="comment-info">
+                    <p className="comment-username">{author}</p>
+                    <p className="comment-body">{body}</p>
+                  </div>
+                </div>
+                <LikeButton
+                  likes={votes}
+                  id={comment_id}
+                  type="comments"
+                  user={this.props.user}
+                  onUserChange={this.onUserChange}
+                />
                 {this.props.user === author ? (
                   <DeleteComment
                     comment_id={comment_id}

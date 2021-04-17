@@ -32,7 +32,7 @@ class LikeButton extends Component {
 
   componentDidUpdate = (prevProps) => {
     if (this.props.user !== prevProps.user) {
-      this.props.onUserChange(this.state.likeChanges);
+      this.props.onUserChange(this.state.likeChanges, this.props.id);
       this.resetLikes();
     }
   };
@@ -47,7 +47,7 @@ class LikeButton extends Component {
           }}
           disabled={this.state.likeChanges > 0 ? true : false}
         >
-          ↑{" "}
+          Like{" "}
         </button>
         {this.state.err ? (
           <p>Sorry you're like could not be posted</p>
@@ -62,7 +62,7 @@ class LikeButton extends Component {
           }}
           disabled={this.state.likeChanges < 0 ? true : false}
         >
-          ↓{" "}
+          Dislike{" "}
         </button>
       </div>
     );

@@ -61,21 +61,24 @@ class Articles extends Component {
           }) => {
             return (
               <div key={article_id} className="flexbox-item">
+                <div className="all-articles-userInfo">
+                  <GetUserPics username={author} />
+                  <small>{author}</small>
+                  <small>{created_at}</small>
+                </div>
                 <Link
                   className="article-header"
                   key={article_id}
                   to={`/articles/${article_id}`}
                 >
-                  <small>{created_at}</small>
-                  <h1>{title}</h1>
+                  <p>{title}</p>
                 </Link>
-                <div className="article-style">
-                  <PicsByTopic topicType={topic} />
-                  <h2>User: {author}</h2>
-                  <GetUserPics username={author} />
+
+                <PicsByTopic topicType={topic} />
+                <div className="all-articles-comments-like-btns">
+                  <LikeButton likes={votes} id={article_id} type="articles" />
                   <p>{comment_count} Comments </p>
                 </div>
-                <LikeButton likes={votes} id={article_id} type="articles" />
               </div>
             );
           }

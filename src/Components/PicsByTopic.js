@@ -8,9 +8,9 @@ import {
 
 function PicsByTopic(props) {
   return (
-    <div className="pic-item">
+    <div>
       {props.topicType === "coding" ? (
-        <div className="group-pics">
+        <div>
           <img
             className="pics"
             src={randomImage(codingImages)}
